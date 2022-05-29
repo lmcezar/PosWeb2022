@@ -27,6 +27,7 @@ module.exports = {
             remotes: {
                 listar: 'listar@http://localhost:9001/remoteEntry.js',
                 cadastrar: 'cadastrar@http://localhost:9002/remoteEntry.js',
+                detalhes: 'detalhes@http://localhost:9003/remoteEntry.js',
             },
             shared: {
                 react: {

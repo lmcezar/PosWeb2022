@@ -2,7 +2,9 @@ import React, { useEffect, useState } from "react";
 import { Table } from "reactstrap";
 import { api } from "../../services/api";
 
-export default function ListarClientes(){
+
+
+export default function ListarClientes(prop){
 
     const [clientes, setClientes] = useState([]);
 
@@ -14,6 +16,11 @@ export default function ListarClientes(){
         const response = await api.get('/clientes');
         setClientes(response.data);
     }
+    function details(id) {
+        prop.navegar(`/detalhes/${id}`);
+    }
+
+   
 
     return(
         <Table striped bordered>
@@ -25,6 +32,7 @@ export default function ListarClientes(){
                     <th scope="col">Altura</th>
                     <th scope="col">Sexo</th>
                     <th scope="col">IMC</th>
+                    <th scope="col">-</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,6 +45,7 @@ export default function ListarClientes(){
                             <td>{cliente.altura}</td>
                             <td>{cliente.sexo}</td>
                             <td>{cliente.imc.toFixed(2)}</td>
+                            <td><button onClick={() => details(cliente.id)}>Detalhes</button></td>
                         </tr>
                     );
                 })}
